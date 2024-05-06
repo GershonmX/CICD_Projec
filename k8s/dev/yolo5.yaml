@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo5
+  labels:
+    app: yolo5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yolo5
+  template:
+    metadata:
+        labels:
+          app: yolo5
+    spec:
+      containers:
+      - name: yolo5
+        image: IMG_URL
+        ports:
+        - containerPort: 8080
+
+---
+# yolo-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: yolo5-dev-svc
+spec:
+  selector:
+    app: yolo5-dev
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: yolo5-dev-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: yolo5-dev-deployment
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
