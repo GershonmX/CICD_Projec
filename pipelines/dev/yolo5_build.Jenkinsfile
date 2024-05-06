@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        DH_NAME = "romkatch"
+        DH_NAME = "gershonmx"
         FULL_VER = "0.0.$BUILD_NUMBER"
     }
     stages {
