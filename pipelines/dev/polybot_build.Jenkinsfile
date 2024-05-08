@@ -24,7 +24,7 @@ pipeline {
 
         stage('Trigger Release') {
             steps {
-                build job: 'releases_dev', wait: false, parameters: [
+                build job: 'Releases_Dev', wait: false, parameters: [
                     string(name: 'IMG_URL', value: "$DH_NAME/cicdev-polybot:$FULL_VER")
                 ]
             }
