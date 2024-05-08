@@ -1,25 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yolo5
+  name: yolo5-dev
   labels:
-    app: yolo5
+    app: yolo5-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: yolo5
+      app: yolo5-dev
   template:
     metadata:
         labels:
-          app: yolo5
+          app: yolo5-dev
     spec:
       containers:
-      - name: yolo5
+      - name: yolo5-dev
         image: IMG_URL
+        env:
+          - name: secret_name
+            value: "gershon-secrets.env-dev"
         ports:
         - containerPort: 8080
-
 ---
 # yolo-service.yaml
 
@@ -41,7 +43,7 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: yolo5-dev-hpa
+  name: yolo5-dev-hpa-dev
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

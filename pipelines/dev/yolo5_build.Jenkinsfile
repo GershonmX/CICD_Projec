@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker_user_Cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'gershonmx-dockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
                     cd yolo5
                     docker login -u $USERNAME -p $PASSWORD
@@ -24,8 +24,8 @@ pipeline {
 
         stage('Trigger Release') {
             steps {
-                build job: 'Polybot_dev_releases', wait: false, parameters: [
-                    string(name: 'POLYBOT_PROD_IMG_URL', value: "$DH_NAME/cicdev-yolo5:$FULL_VER")
+                build job: 'releases_dev', wait: false, parameters: [
+                    string(name: 'IMG_URL', value: "$DH_NAME/cicdev-yolo5:$FULL_VER")
                 ]
             }
         }

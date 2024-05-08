@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: server
-        image: IMG_URL  # placeholder. to be replaces by jenkins releases pipeline
+        image: IMG_URL
+        env:
+          - name: secret_name
+            value: "gershon-secrets.env"
 ---
 apiVersion: v1
 kind: Service
