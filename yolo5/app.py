@@ -10,7 +10,7 @@ from decimal import Decimal
 
 
 def get_secret():
-    secret_name = "gershon-secrets.env"
+    secret_name = os.environ['secret_name']
     region_name = "us-east-2"
 
     # Create a Secrets Manager client
@@ -39,7 +39,7 @@ TELEGRAM_TOKEN = secrets["TELEGRAM_TOKEN"]  # os.environ['TELEGRAM_TOKEN']
 TELEGRAM_APP_URL = secrets["TELEGRAM_APP_URL"]  # os.environ['TELEGRAM_APP_URL']
 
 images_bucket = 'gershonm-s3'
-queue_name = 'Gershonm-sqs-Aws'
+queue_name = secrets["QUEUE_NAME"]
 sqs_client = boto3.client('sqs', region_name='us-east-2')
 
 # Load COCO names
