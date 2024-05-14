@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Update YAML') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'gershonmx-dockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'GitHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
                     printenv
                     if [[ "$IMG_URL" == *"-polybot"* ]]; then
