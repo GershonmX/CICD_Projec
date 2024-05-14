@@ -24,7 +24,7 @@ pipeline {
 
         stage('Trigger Release') {
             steps {
-                build job: 'Releases-Dev', wait: false, parameters: [
+                build job: 'Releases_Dev', wait: false, parameters: [
                     string(name: 'IMG_URL', value: "$DH_NAME/cicdev-yolo5:$FULL_VER")
                 ]
             }
