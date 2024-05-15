@@ -7,6 +7,7 @@ import yaml
 from loguru import logger
 import boto3
 from decimal import Decimal
+import os
 
 
 def get_secret():
