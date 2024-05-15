@@ -11,8 +11,10 @@ pipeline {
                     printenv
                     if [[ "$IMG_URL" == *"-polybot"* ]]; then
                         YAML_FILE="k8s/dev/polybot.yaml"
+                        PWD
                     elif [[ "$IMG_URL" == *"-yolo5"* ]]; then
                         YAML_FILE="k8s/dev/yolo5.yaml"
+                        PWD
                     else
                         exit 7
                     fi
