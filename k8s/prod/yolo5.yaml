@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: yolo5
-        image: gershonmx/cicd-yolo5:0.0.25
+        image: gershonmx/cicd-yolo5:0.0.26
         env:
           - name: secret_name
             value: "gershon-secrets.env"
