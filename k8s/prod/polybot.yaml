@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gershonmx/cicd-polybot:0.0.17
+        image: gershonmx/cicd-polybot:0.0.18
         env:
           - name: secret_name
             value: "gershon-secrets.env"
