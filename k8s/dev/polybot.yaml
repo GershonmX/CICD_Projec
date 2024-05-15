@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: IMG_URL
+        image: gershonmx/cicdev-polybot:0.0.16
         env:
           - name: secret_name
             value: "gershon-secrets.env-dev"
